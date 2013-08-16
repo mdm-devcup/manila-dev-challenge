@@ -1,0 +1,4 @@
+*.swap
+*.class
+*.pyc
+*.bin

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+</html>
+<script>
+  var messageShowed;
+  alert(messageShowed);
+  var person = (function(firstName, lastName, contactNumber, address) {
+    var me = {firstName: firstName, lastName: lastName, contactNumber: contactNumber, address: address};
+    me.fullName = me.firstName + ' ' + me.lastName; 
+
+    me.toString = function() {
+      return me.fullName + ' ' + me.contactNumber + ' ' + me.address; 
+    };
+
+    me.equals = function(searchText) {
+      return searchText === me.firstName || searchText === me.lastName;
+    }
+    return me;
+  });
+
+  function print(array) {
+    for(var i = 0; i < array.length; ++i) 
+      console.log(array[i].fullName);
+  }
+
+  function find(array, firstName, lastName) {
+    for(var i = 0; i < array.length; ++i) 
+      if(array[i].equals(firstName, lastName)) return array[i].toString(); 
+    return 'No person found.';
+  }
+
+  (function() {
+    var array = [
+      person('Joe', 'Black', 'unkown', 'Unknown'),
+      person('John', 'Doe', 'unkown', 'Unknown'),
+      person('Jamie', 'Smith', 'unkown', 'Unknown'),
+    ];
+    print(array);
+    console.log(find(array, 'Joe'));
+    console.log(find(array, 'Smith'));
+    console.log(find(array, 'Sam'));
+  }());
+</script>
